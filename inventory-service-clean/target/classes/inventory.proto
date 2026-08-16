@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package inventory;
+
+option java_multiple_files = true;
+option java_package = "com.example.inventoryservice.grpc";
+
+service InventoryService {
+  rpc GetStock (StockRequest) returns (StockResponse);
+  rpc DeductStock (DeductStockRequest) returns (DeductStockResponse);
+  rpc GetAllStocks (EmptyRequest) returns (StockListResponse);
+}
+
+message EmptyRequest {}
+
+message StockRequest {
+  string product_id = 1;
+}
+
+message StockResponse {
+  string product_id = 1;
+  int32 quantity = 2;
+}
+
+message DeductStockRequest {
+  string product_id = 1;
+  int32 amount = 2;
+}
+
+message DeductStockResponse {
+  bool success = 1;
+  string message = 2;
+  int32 remaining_quantity = 3;
+}
+
+message StockListResponse {
+  repeated StockResponse stocks = 1;
+}
