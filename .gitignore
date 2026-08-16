@@ -1,0 +1,15 @@
+# 忽略所有 Maven 編譯產出的 target 資料夾
+**/target/
+*.class
+*.jar
+
+# 忽略 IDE 產生的設定檔
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# 忽略系統暫存檔
+.DS_Store
+Thumbs.db
